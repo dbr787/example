@@ -1,0 +1,27 @@
+steps:
+  - label: ":gun: Let's Go!"
+    command: echo "Here we go..."
+
+  - label: ":package: Build and upload"
+    # Compile a GO binary named 'hello' in the hello dir
+    command: go build -o hello ./hello
+    plugins:
+      - docker#v3.13.0:
+          image: "golang:1.18"
+    # Upload the 'hello' GO binary as an artifact
+    artifact_paths: "/hello/hello"
+
+  - label: ":name_badge: Get Name"
+    block: "What be thy name?"
+    prompt: "Please provide your name"
+    fields:
+      - text: "Name"
+        key: "name"
+
+  - label: ":beer: Download and run"
+    commands:
+    # Download the 'hello' GO binary to the local hello dir
+    - buildkite-agent artifact download hello/hello hello
+    - chmod +x hello/hello
+    # Execute the 'hello' GO binary with the name provided as a parameter
+    - ./hello/hello $(buildkite-agent meta-data get "name")

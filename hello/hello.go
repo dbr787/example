@@ -18,13 +18,13 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
-        "os"
 )
 
 func main() {
-	
-	name := strings.Join(os.Args[1:]," ")
+
+	name := strings.Join(os.Args[1:], " ")
 	response := "Hello, " + name + "!"
 	fmt.Println(response)
 }
