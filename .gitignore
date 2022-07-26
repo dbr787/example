@@ -20,4 +20,34 @@
 # Go workspace file
 go.work
 
+
+
+.vscode
+**/.terraform/*
+
+.terraform
+.terraform.lock.hcl
+
+*.tfstate
+*.tfstate.*
+
+crash.log
+
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+.terraformrc
+terraform.rc
+
+*.pem
+terraform.tfvars
+secret.tfvars
+secret.auto.tfvars
+.DS_Store
+
+# Ignore license files
+license*yaml
+
 hello/hello

@@ -1,0 +1,28 @@
+# main
+aws_region         = "ap-southeast-2"
+project_id         = "buildkite"
+email              = "myemail@gmail.com"
+vpc_cidr           = "10.70.0.0/16"
+public_subnet_cidr = "10.70.1.0/24"
+allowed_ip_cidrs   = ["119.69.10.11/32"]
+
+buildkite_agents = [
+  {
+    id              = "alx01",
+    platform        = "linux"
+    instance_count  = 2
+    instance_type   = "t2.small"
+    ssh_user        = "ec2-user"
+    ami_owner       = "137112412989"
+    ami_name_filter = "amzn2-ami-kernel-5.10-hvm-2.0.*x86_64-gp2"
+  },
+  {
+    id              = "alx02"
+    platform        = "linux"
+    instance_count  = 2
+    instance_type   = "t2.medium"
+    ssh_user        = "ec2-user"
+    ami_owner       = "137112412989"
+    ami_name_filter = "amzn2-ami-kernel-5.10-hvm-2.0.*x86_64-gp2"
+  }
+]
