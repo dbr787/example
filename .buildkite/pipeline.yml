@@ -3,13 +3,15 @@ steps:
     command: echo "Here we go..."
 
   - label: ":package: Build and upload"
-    # Compile a GO binary named 'hello' in the hello dir
-    command: go build -o hello ./hello
+    # Compile a GO binary named 'hello'
+    commands:
+    - cd hello
+    - go build
     plugins:
       - docker#v3.13.0:
           image: "golang:1.18"
     # Upload the 'hello' GO binary as an artifact
-    artifact_paths: "/hello/hello"
+    artifact_paths: "hello/hello"
 
   - label: ":name_badge: Get Name"
     block: "What be thy name?"
